@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+	char ad[20];
+	int sifre;
+	char cevap='h';
+	int secim;
+	
+	int bakiye=100;
+	do{
+	printf("Kullanici adinizi giriniz!..\t:");
+	scanf("%s",&ad);
+	printf("Kullanici sifresini giriniz!..\t:");
+	scanf("%d",&sifre);
+	if( sifre==123)
+	{
+		cevap='e';
+		
+	}
+	else
+	{
+		printf("Kullanici bilgileriniz yanlis lutfen kontrol ediniz!..\n");
+		
+	}
+	}while(cevap!='e');
+	do{
+	printf("\t=============================\n");
+	printf("\t\t1.Hesap Bakiyesi:\n");
+	printf("\t\t2.Hesaba Para Ekle :\n");
+	printf("\t\t3.Hesaptan Para Cek :\n");
+	printf("\t\t4.Para Transferi :\n");
+	printf("\t\t5.Cikis :\n");
+	scanf("%d",&secim);
+	switch (secim)
+	{
+	case 1:
+		printf("Hesap Bakiyeniz :%d\n",bakiye);
+		break;
+	case 2:
+		int para;
+		printf("Ne Kadar Yatirmak istiyorsunuz :");
+		scanf("%d",&para);
+		bakiye+=para;
+		printf("Toplam Bakiyeniz :%d\n",bakiye);
+		break;
+	case 3:
+		int miktar1;
+		
+		printf("Ne Kadar cekmek istiyorsunuz :");
+		scanf("%d",&miktar1);
+		if(miktar1>bakiye)
+		{
+			do{
+				printf("Bakiyenizden fazla para cekemezsiniz!..\tBakiyeniz :%d\n",bakiye);
+				printf("Ne Kadar cekmek istiyorsunuz :");
+				scanf("%d",&miktar1);
+			}while(miktar1>bakiye);
+		}
+		bakiye-=miktar1;
+		printf("Toplam Kalan Bakiyeniz :%d\n",bakiye);
+		break;
+	case 4:
+		int miktar;
+		do{
+		printf("Transfer edilecek miktar :");
+		scanf("%d",&miktar);
+		}while(miktar<=bakiye);
+		bakiye-=para;
+		printf("Toplam Kalan Bakiyeniz :%d\n",bakiye);
+		break;
+	case 5:
+		break;
+	default:
+		printf("Lutfen 1 ve 5 arasinda bir deger giriniz!..\n");
+		break;
+	}
+
+	}while(secim!=5);
+
+}
